@@ -65,3 +65,6 @@ other = "Link to heading"
 
 [sources]
 sources = "sources"
+
+[word_count]
+words = "{{ .WordCount }} words"

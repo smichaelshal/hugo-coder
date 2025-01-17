@@ -21,8 +21,8 @@
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa-solid fa-clock" aria-hidden="true"></i>
-              {{ i18n "reading_time" .ReadingTime }}
+              <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
+                {{ i18n "word_count.words" . }}
             </span>
           </div>
           {{ with .GetTerms "authors" }}{{ partial "taxonomy/authors.html" . }}{{ end }}
