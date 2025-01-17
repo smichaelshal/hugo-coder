@@ -352,3 +352,8 @@
   .highlight {
     direction: ltr;
   }
+
+  p code {
+    direction: ltr;
+    unicode-bidi: embed;
+  }
