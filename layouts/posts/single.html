@@ -22,7 +22,9 @@
             </span>
             <span class="reading-time">
               <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
+              {{ if gt .WordCount 0 }}
                 {{ i18n "word_count.words" . }}
+              {{ end }}
             </span>
           </div>
           {{ with .GetTerms "authors" }}{{ partial "taxonomy/authors.html" . }}{{ end }}
