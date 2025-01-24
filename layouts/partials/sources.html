@@ -3,7 +3,21 @@
     {{ i18n "sources.sources" | default "Sources" }}
   </h3>
   <ul dir="ltr">
-    {{ range uniq .Sources }}
+    {{ $flatSources := slice }}
+    {{ range .Sources }}
+      {{ if reflect.IsSlice . }}
+        {{ range . }}
+          {{ if . }}
+            {{ $flatSources = $flatSources | append . }}
+          {{ end }}
+        {{ end }}
+      {{ else }}
+        {{ if . }}
+          {{ $flatSources = $flatSources | append . }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ range uniq $flatSources }}
       <li>
         <a href="{{ . }}">{{ . }}</a>
       </li>
