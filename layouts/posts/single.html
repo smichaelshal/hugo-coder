@@ -36,11 +36,22 @@
           <img src="{{ .Params.featuredImage | relURL }}" alt="Featured image"/>
         {{ end }}
         {{ .Content }}
+        
+        {{ $allSources := slice }}
+        {{ if isset .Params "sources" }}
+          {{ $allSources = .Params.sources }}
+        {{ end }}
+
+        {{ if and (isset .Params "collection") (eq .Params.collection true) }}
+          {{range sort (.Resources.ByType "page") ".Params.order"}}
+            {{ .Content | safeHTML }}
+            {{ $allSources = $allSources | append .Params.sources }}
+          {{end}}
+        {{ end }}
+
       </div>
-
-
       <footer>
-        {{ partial "sources.html" . }}
+        {{ partial "sources.html" (dict "Sources" $allSources "Language" .Language) }}
         {{ partial "posts/series.html" . }}
         {{ partial "posts/disqus.html" . }}
         {{ partial "posts/commento.html" . }}
