@@ -3,7 +3,7 @@
     {{ i18n "sources.sources" | default "Sources" }}
   </h3>
   <ul dir="ltr">
-  {{ range .Params.Sources }}
+  {{ range uniq .Params.Sources }}
     <li>
       <a href="{{ .}}">{{ . }}</a>
     </li>
