@@ -12,7 +12,7 @@
     </header>
     {{ .Content }}
     <ul>
-      {{- range .Paginator.Pages -}}
+      {{- range where .Paginator.Pages ".Params.collection" "!=" false -}}
         {{- .Render "li" -}}
       {{- end -}}
     </ul>
